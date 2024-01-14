@@ -4,7 +4,7 @@ import axios from "axios";
 import logoFull from "./assets/icon/logoFull.png";
 import home from "./assets/icon/dashboard.png";
 import analysis from "./assets/icon/analysis.png";
-import complaint from "./assets/icon/complaints.png";
+import ComplaintsIcon from "./assets/icon/complaints.png";
 import profile from "./assets/icon/profile.png";
 import setting from "./assets/icon/setting.png";
 import email from "./assets/icon/mail.png";
@@ -58,7 +58,7 @@ const Dashboard = () => {
           </a>
 
           <a className="flex items-center gap-4 pl-4" href="">
-            <img className="w-6 h-6" src={complaint} alt="" />
+            <img className="w-6 h-6" src={ComplaintsIcon} alt="" />
             <h1 className="text-lg font-medium text-[#A3AED0]">Complaints</h1>
           </a>
 
