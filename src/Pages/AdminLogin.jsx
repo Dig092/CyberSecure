@@ -23,28 +23,45 @@ const AdminLogin = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      console.log('Before API Call');
-      const response = await axios.post('https://cyber-secure.onrender.com/v1/admin/login',{
-        name : username,
-        designation : rank,
-        identificationNumber : identification,
-        issuedDate :date
-      },{
+      const response = await axios.post('https://cyber-secure.onrender.com/v1/admin/login', {
+        name: username,
+        designation: rank,
+        identificationNumber: identification,
+        issuedDate: date
+      }, {
         withCredentials: true,
       });
-      toast.success("Valid Credentials !", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-      console.log('Valid Credential', response);
-      navigate('/dashboard');
-    } catch(error) {
-      toast.error("InValid Credentials !", {
+  
+      // Assuming the API returns success status
+      if (response.status === 201 || response.status === 200) {
+        // Extract email from the API response
+        const userEmail = response.data.email;
+  
+        // Store the email in local storage
+        localStorage.setItem('userEmail', userEmail);
+  
+        // Display success toast
+        toast.success("Valid Credentials !", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+  
+        // Redirect to AdminVerify or any other page
+        navigate('/AdminVerify');
+      } else {
+        // Display error toast
+        toast.error("Invalid Credentials !", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      }
+    } catch (error) {
+      // Display error toast
+      toast.error("Invalid Credentials !", {
         position: toast.POSITION.TOP_RIGHT,
       });
       console.error('Invalid Credential', error);
     }
-    console.log('After API Call');
   };
+  
 
   return (
     <div className="bg-[#F2F6FF]">
