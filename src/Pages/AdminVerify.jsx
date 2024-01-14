@@ -1,70 +1,75 @@
-import { useState, useEffect,useRef} from "react";
+import { useState, useEffect,useRef } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../AuthContext";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 
 const AdminVerify = () => {
-  const navigate = useNavigate();
-  const [verificationCodes, setVerificationCodes] = useState(["", "", "", ""]);
-  const [userEmail, setUserEmail] = useState("");
-  const inputRefs = [useRef(), useRef(), useRef(), useRef()];
-
-
-  useEffect(() => {
-    // Retrieve email from local storage
-    const storedEmail = localStorage.getItem("userEmail");
-    setUserEmail(storedEmail);
-  }, []);
-
-  const handleVerify = async (e) => {
-    e.preventDefault();
-
-    try {
-      // Concatenate verification codes into a single string
-      const concatenatedOtp = verificationCodes.join("");
-
-      const response = await axios.post(
-        "https://cyber-secure.onrender.com/v1/admin/verifyOtp",
-        {
-          email: userEmail,
-          otp: concatenatedOtp,
-        },
-        {
-          withCredentials: true,
+    const navigate = useNavigate();
+    const [verificationCodes, setVerificationCodes] = useState(["", "", "", ""]);
+    const [userEmail, setUserEmail] = useState("");
+    const inputRefs = [useRef(), useRef(), useRef(), useRef()];
+    const { setAuthData } = useAuth();
+  
+    useEffect(() => {
+      // Retrieve email from local storage
+      const storedEmail = localStorage.getItem("userEmail");
+      setUserEmail(storedEmail);
+    }, []);
+  
+    const handleVerify = async (e) => {
+      e.preventDefault();
+  
+      try {
+        // Concatenate verification codes into a single string
+        const concatenatedOtp = verificationCodes.join("");
+  
+        const response = await axios.post(
+          "https://cyber-secure.onrender.com/v1/admin/verifyOtp",
+          {
+            email: userEmail,
+            otp: concatenatedOtp,
+          },
+          {
+            withCredentials: true,
+          }
+        );
+  
+        // Assuming the API returns success status
+        if (response.status === 200 || response.status === 201) {
+          // Store the access token in context
+          const accessToken = response.data.accessToken;
+          setAuthData(accessToken);
+  
+          toast.success("Account verified successfully!", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+          navigate("/Dashboard");
+        } else {
+          toast.error("Verification failed. Please try again.", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
         }
-      );
-
-      // Assuming the API returns success status
-      if (response.status === 200 || response.status === 201) {
-        toast.success("Account verified successfully!", {
+      } catch (error) {
+        toast.error("Error verifying account. Please try again.", {
           position: toast.POSITION.TOP_RIGHT,
         });
-        navigate("/Dashboard");
-      } else {
-        toast.error("Verification failed. Please try again.", {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        console.error("Verification Error:", error);
       }
-    } catch (error) {
-      toast.error("Error verifying account. Please try again.", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-      console.error("Verification Error:", error);
-    }
-  };
-
-  const handleInputChange = (index, value) => {
-    const newCodes = [...verificationCodes];
-    newCodes[index] = value;
-    setVerificationCodes(newCodes);
-
-    // Move focus to the next input
-    if (index < inputRefs.length - 1 && value !== "") {
-      inputRefs[index + 1].current.focus();
-    }
-  };
+    };
+  
+    const handleInputChange = (index, value) => {
+      const newCodes = [...verificationCodes];
+      newCodes[index] = value;
+      setVerificationCodes(newCodes);
+  
+      // Move focus to the next input
+      if (index < inputRefs.length - 1 && value !== "") {
+        inputRefs[index + 1].current.focus();
+      }
+    };
 
   return (
     <>

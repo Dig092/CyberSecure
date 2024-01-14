@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import SideBar from "./Components/SideBar";
 
-import logoFull from "./assets/icon/logoFull.png";
-import home from "./assets/icon/dashboard.png";
-import analysis from "./assets/icon/analysis.png";
-import ComplaintsIcon from "./assets/icon/ComplaintsIcon.png";
-import profile from "./assets/icon/Profile.png";
-import setting from "./assets/icon/setting.png";
+
 import email from "./assets/icon/mail.png";
 import notification from "./assets/icon/notification.png";
 import active from "./assets/icon/active.png";
@@ -17,7 +13,6 @@ import location from "./assets/icon/LocationIcon.png";
 import articles from "./assets/icon/articles.png";
 
 import chatbot from "./assets/images/Chatbot.png";
-import logOut from "./assets/images/log.png";
 import CTA from "./assets/images/CTA.png";
 
 const Dashboard = () => {
@@ -39,44 +34,7 @@ const Dashboard = () => {
 
   return (
     <div className="bg-[#F2F6FF] flex w-screen h-full">
-      <div className="bg-white flex flex-col items-center h-screen fixed z-10">
-        <div className="m-6 p-5 w-56 pb-16">
-          <img src={logoFull} alt="" />
-        </div>
-        <div className="flex flex-col space-y-8">
-          <a
-            className="flex items-center justify-center gap-4 bg-blue-500 pl-4 pr-16 rounded-md py-2"
-            href=""
-          >
-            <img className="w-6 h-6" src={home} alt="" />
-            <h1 className="text-lg font-medium text-white">Dashboard</h1>
-          </a>
-
-          <a className="flex items-center gap-4 pl-4" href="">
-            <img className="w-6 h-6" src={analysis} alt="" />
-            <h1 className="text-lg font-medium text-[#A3AED0]">Analysis</h1>
-          </a>
-
-          <a className="flex items-center gap-4 pl-4" href="">
-            <img className="w-6 h-6" src={ComplaintsIcon} alt="" />
-            <h1 className="text-lg font-medium text-[#A3AED0]">Complaints</h1>
-          </a>
-
-          <a className="flex items-center gap-4 pb-3 pl-4" href="">
-            <img className="w-6 h-5.5" src={profile} alt="" />
-            <h1 className="text-lg font-medium text-[#A3AED0]">Profile</h1>
-          </a>
-
-          <a className="flex items-center gap-4 pl-4" href="">
-            <img className="w-6 h-6" src={setting} alt="" />
-            <h1 className="text-lg font-medium text-[#A3AED0]">Settings</h1>
-          </a>
-
-          <a href="">
-            <img className="absolute w-56 pl-4 bottom-8" src={logOut} alt="" />
-          </a>
-        </div>
-      </div>
+      <SideBar/>
 
       <div className="flex flex-col w-screen h-full">
         <div className="bg-[#F2F6FF] flex w-[76.4rem] backdrop-blur-3xl bg-opacity-80 h-1/6 items-center justify-between p-8 fixed right-0 z-10">
