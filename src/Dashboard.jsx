@@ -1,8 +1,10 @@
-// import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 import logoFull from "./assets/icon/logoFull.png";
 import home from "./assets/icon/dashboard.png";
 import analysis from "./assets/icon/analysis.png";
-import complaints from "./assets/icon/complaints.png";
+import complaint from "./assets/icon/complaints.png";
 import profile from "./assets/icon/profile.png";
 import setting from "./assets/icon/setting.png";
 import email from "./assets/icon/mail.png";
@@ -19,6 +21,22 @@ import logOut from "./assets/images/log.png";
 import CTA from "./assets/images/CTA.png";
 
 const Dashboard = () => {
+  const [complaints, setComplaints] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://cyber-secure.onrender.com/v1/admin/getComplaints"
+        );
+        setComplaints(response.data);
+      } catch (error) {
+        console.error("Error fetching complaints", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className="bg-[#F2F6FF] flex w-screen h-full">
       <div className="bg-white flex flex-col items-center h-screen fixed z-10">
@@ -40,7 +58,7 @@ const Dashboard = () => {
           </a>
 
           <a className="flex items-center gap-4 pl-4" href="">
-            <img className="w-6 h-6" src={complaints} alt="" />
+            <img className="w-6 h-6" src={complaint} alt="" />
             <h1 className="text-lg font-medium text-[#A3AED0]">Complaints</h1>
           </a>
 
@@ -104,59 +122,28 @@ const Dashboard = () => {
                   <img className="w-24" src={CTA} alt="" />
                 </a>
               </div>
-              <div
-                className="m-4 rounded px-4 py-2"
-                style={{ boxShadow: "-4px 4px 12px 0px rgba(0, 0, 0, 0.06)" }}
-              >
-                <div className="flex items-center justify-between gap-4 ">
-                  <div className="flex items-center gap-4">
-                    <img className="w-12" src={user} alt="" />
-                    <div className="font-semibold">
-                      <h1>Manas Jha</h1>
-                      <h1>Kanpur, UttarPradesh</h1>
+              {complaints.map((complaint, index) => (
+                <div
+                  key={index}
+                  className="m-4 rounded px-4 py-2"
+                  style={{ boxShadow: "-4px 4px 12px 0px rgba(0, 0, 0, 0.06)" }}
+                >
+                  <div className="flex items-center justify-between gap-4 ">
+                    <div className="flex items-center gap-4">
+                      <img className="w-12" src={user} alt="" />
+                      <div className="font-semibold">
+                        <h1>{complaint.name}</h1>
+                        <h1>
+                          {complaint.district}, {complaint.state}
+                        </h1>
+                      </div>
                     </div>
+                    <button className="bg-blue-500 px-8 py-2 rounded-md text-white">
+                      View
+                    </button>
                   </div>
-                  <button className="bg-blue-500 px-8 py-2 rounded-md text-white">
-                    View
-                  </button>
                 </div>
-              </div>
-
-              <div
-                className="m-4 rounded px-4 py-2"
-                style={{ boxShadow: "-4px 4px 12px 0px rgba(0, 0, 0, 0.06)" }}
-              >
-                <div className="flex items-center justify-between gap-4 ">
-                  <div className="flex items-center gap-4">
-                    <img className="w-12" src={user} alt="" />
-                    <div className="font-semibold">
-                      <h1>Manas Jha</h1>
-                      <h1>Kanpur, UttarPradesh</h1>
-                    </div>
-                  </div>
-                  <button className="bg-blue-500 px-8 py-2 rounded-md text-white">
-                    View
-                  </button>
-                </div>
-              </div>
-
-              <div
-                className="m-4 rounded px-4 py-2"
-                style={{ boxShadow: "-4px 4px 12px 0px rgba(0, 0, 0, 0.06)" }}
-              >
-                <div className="flex items-center justify-between gap-4 ">
-                  <div className="flex items-center gap-4">
-                    <img className="w-12" src={user} alt="" />
-                    <div className="font-semibold">
-                      <h1>Manas Jha</h1>
-                      <h1>Kanpur, UttarPradesh</h1>
-                    </div>
-                  </div>
-                  <button className="bg-blue-500 px-8 py-2 rounded-md text-white">
-                    View
-                  </button>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
           <div className="flex flex-col items-center">
