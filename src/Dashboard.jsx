@@ -4,7 +4,7 @@ import axios from "axios";
 import logoFull from "./assets/icon/logoFull.png";
 import home from "./assets/icon/dashboard.png";
 import analysis from "./assets/icon/analysis.png";
-import ComplaintsIcon from "./assets/icon/complaints.png";
+import ComplaintsIcon from "./assets/icon/ComplaintsIcon.png";
 import profile from "./assets/icon/profile.png";
 import setting from "./assets/icon/setting.png";
 import email from "./assets/icon/mail.png";
