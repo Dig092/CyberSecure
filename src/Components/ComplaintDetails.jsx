@@ -6,8 +6,8 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
       <div className="flex flex-col ">
         <h1 className="font-semibold text-xl py-4">Complaint Details</h1>
         <div className="flex gap-x-20">
-          <div className="w-96 h-48 object-contain">
-            <img src={selectedComplaint.nationalIdImageUrl} alt="" />
+          <div className="">
+            <img className="w-48 h-24 object-cover" src={selectedComplaint.nationalIdImageUrl} alt="" />
           </div>
           <div className="flex flex-col gap-y-2">
             <h1> <span className="font-semibold text-lg">Name</span> : {selectedComplaint.user.name}</h1>
