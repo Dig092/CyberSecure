@@ -89,7 +89,7 @@ const Dashboard = () => {
                       boxShadow: "-4px 4px 12px 0px rgba(0, 0, 0, 0.06)",
                     }}
                   >
-                    <div className="flex items-center justify-between gap-4 ">
+                    <div className="flex items-center justify-between gap-4">
                       <div className="flex items-center gap-4">
                         <img className="w-12" src={user} alt="" />
                         <div className="font-semibold">
