@@ -7,7 +7,7 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
         <h1>Complaint Details</h1>
         <div className="flex">
           <div>
-            <img src="" alt="" />
+            <img src={selectedComplaint.nationalIdImageUrl} alt="" />
           </div>
           <div className="flex flex-col">
             <h1>Name : {selectedComplaint.user.name}</h1>
@@ -16,7 +16,7 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
             <h1>State : {selectedComplaint.state}</h1>
             <h1>District : {selectedComplaint.district}</h1>
           </div>
-          <div>
+          <div className="flex flex-col">
             <h1>House No. : {selectedComplaint.houseNo}</h1>
             <h1>street Name : {selectedComplaint.streetName}</h1>
             <h1>
