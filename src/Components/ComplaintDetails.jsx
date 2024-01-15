@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const ComplaintDetails = ({ selectedComplaint, onClose }) => {
   return (
-    <div className="fixed top-28 right-0 overflow-y-auto p-4 bg-gray-800 bg-opacity-75 z-50">
+    <div className="fixed top-28 right-10 overflow-y-auto p-4 bg-white rounded-3xl z-50">
       <div className="flex flex-col ">
         <h1>Complaint Details</h1>
         <div className="flex">
