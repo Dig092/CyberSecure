@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 const ComplaintDetails = ({ selectedComplaint, onClose }) => {
   const [readConfirmation, setReadConfirmation] = useState(false);
+  const [showDenyPopup, setShowDenyPopup] = useState(false);
+  const [dismissalReason, setDismissalReason] = useState("");
 
   const handleCheckboxChange = () => {
     setReadConfirmation(!readConfirmation);
@@ -13,6 +15,26 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
     // For now, just log a message
     console.log("Verification clicked");
   };
+
+  const handleDenyClick = () => {
+    setShowDenyPopup(true);
+  };
+
+  const handleDismissalReasonChange = (e) => {
+    setDismissalReason(e.target.value);
+  };
+
+  const handleDenyConfirm = () => {
+    // Perform denial logic here, using dismissalReason
+    // For now, just log a message
+    console.log("Deny clicked with reason:", dismissalReason);
+    setShowDenyPopup(false);
+  };
+
+  const handleDenyCancel = () => {
+    setShowDenyPopup(false);
+  };
+
   return (
     <div className="absolute top-6 left-6 w-full h-full overflow-y-auto p-4 bg-white rounded-3xl z-4">
       <div className="flex flex-col pl-8">
@@ -115,16 +137,52 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
             I have read all documents and evidence
           </label>
         </div>
-        <button
-          className={`bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 ${
-            !readConfirmation && "opacity-50 cursor-not-allowed"
-          }`}
-          onClick={handleVerifyClick}
-          disabled={!readConfirmation}
-        >
-          Verify
-        </button>
+        <div className="flex gap-x-4 my-4">
+          <button
+            className={`bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 ${
+              !readConfirmation && "opacity-50 cursor-not-allowed"
+            }`}
+            onClick={handleVerifyClick}
+            disabled={!readConfirmation}
+          >
+            Verify
+          </button>
+          <button
+            className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600"
+            onClick={handleDenyClick}
+          >
+            Deny
+          </button>
+        </div>
       </div>
+
+      {showDenyPopup && (
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-lg z-50">
+          <h1 className="text-xl font-bold mb-4">Reason for Dismissal</h1>
+          <textarea
+            rows="4"
+            cols="50"
+            value={dismissalReason}
+            onChange={handleDismissalReasonChange}
+            placeholder="Enter reason here..."
+            className="border rounded p-2 mb-4"
+          ></textarea>
+          <div className="flex justify-end">
+            <button
+              className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 mr-2"
+              onClick={handleDenyConfirm}
+            >
+              Confirm
+            </button>
+            <button
+              className="bg-gray-300 text-gray-800 px-4 py-2 rounded-full hover:bg-gray-400"
+              onClick={handleDenyCancel}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
