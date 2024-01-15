@@ -93,7 +93,7 @@ const Dashboard = () => {
                       <div className="flex items-center gap-4">
                         <img className="w-12" src={user} alt="" />
                         <div className="font-semibold">
-                          <h1>{complaint.name}</h1>
+                          <h1>{complaint.user.name}</h1>
                           <h1>
                             {complaint.district}, {complaint.state}
                           </h1>
