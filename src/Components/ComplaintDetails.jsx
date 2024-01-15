@@ -1,7 +1,7 @@
-
 import PropTypes from "prop-types";
 
 const ComplaintDetails = ({ selectedComplaint, onClose }) => {
+    console.log("Selected Complaint:", selectedComplaint);
   return (
     <div className="selected-complaint-details">
       <h2>Details for {selectedComplaint.user.name}</h2>
