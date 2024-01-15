@@ -1,15 +1,26 @@
+import { useState } from "react";
+import ComplaintDetails from "./ComplaintDetails";
 import PropTypes from "prop-types";
 import user from "../assets/icon/user.png";
 
 const styles = {
-    container: {
-      maxHeight: "280px", // Set the maximum height as needed
-      overflowY: "auto", // Add a scrollbar when content overflows
-    },
-    // Add more styles as needed
-  };
+  container: {
+    maxHeight: "280px", // Set the maximum height as needed
+    overflowY: "auto", // Add a scrollbar when content overflows
+  },
+  // Add more styles as needed
+};
 
 const ComplaintList = ({ complaints }) => {
+  const [selectedComplaint, setSelectedComplaint] = useState(null);
+
+  const handleViewClick = (complaint) => {
+    setSelectedComplaint(complaint);
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedComplaint(null);
+  };
   return (
     <div style={styles.container} className="complaint-list-container">
       <ul className="complaint-list">
@@ -31,13 +42,22 @@ const ComplaintList = ({ complaints }) => {
                   </h1>
                 </div>
               </div>
-              <button className="bg-blue-500 px-8 py-2 rounded-md text-white">
+              <button
+                className="bg-blue-500 px-8 py-2 rounded-md text-white"
+                onClick={() => handleViewClick(complaint)}
+              >
                 View
               </button>
             </div>
           </li>
         ))}
       </ul>
+      {selectedComplaint && (
+        <ComplaintDetails
+          selectedComplaint={selectedComplaint}
+          onClose={handleCloseDetails}
+        />
+      )}
     </div>
   );
 };
