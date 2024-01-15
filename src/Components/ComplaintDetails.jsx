@@ -4,9 +4,9 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
   return (
     <div className="fixed top-28 right-10 overflow-y-auto p-4 bg-white rounded-3xl z-50">
       <div className="flex flex-col ">
-        <h1>Complaint Details</h1>
-        <div className="flex">
-          <div>
+        <h1 className="font-semibold text-xl py-4">Complaint Details</h1>
+        <div className="flex gap-x-20">
+          <div className="w-{405px} h-{248px} object-cover">
             <img src={selectedComplaint.nationalIdImageUrl} alt="" />
           </div>
           <div className="flex flex-col">
@@ -24,14 +24,14 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
             </h1>
           </div>
         </div>
-        <h1>Incident Details</h1>
+        <h1 className="font-semibold text-xl py-4">Incident Details</h1>
         <div className="flex flex-col">
           <h1>Category : {selectedComplaint.user.category}</h1>
           <h1>Sub-Category : {selectedComplaint.subcategory}</h1>
           <h1>Date : {selectedComplaint.date}</h1>
           <h1>Time : {selectedComplaint.time}</h1>
         </div>
-        <h1>Evidence / Important Documents</h1>
+        <h1 className="font-semibold text-xl py-4">Evidence / Important Documents</h1>
         <div>
           <img src="" alt="" />
         </div>
