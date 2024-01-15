@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 const ComplaintDetails = ({ selectedComplaint, onClose }) => {
   const [readConfirmation, setReadConfirmation] = useState(false);
@@ -10,10 +11,40 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
     setReadConfirmation(!readConfirmation);
   };
 
-  const handleVerifyClick = () => {
-    // Perform verification logic here
-    // For now, just log a message
-    console.log("Verification clicked");
+  const handleVerifyClick = async () => {
+    if (readConfirmation) {
+      try {
+        // Prepare data for the API request
+        const requestData = {
+          acknowledgementNumber: selectedComplaint.acknowledgementNumber,
+          verificationStatus: true,
+          dismissalStatus: false,
+          dismissalReason: "Reason for dismissal",
+          actionTaken: "Resolved",
+          bankName: selectedComplaint.bankName,
+          holderName: selectedComplaint.holderName,
+          accountNumber: selectedComplaint.accountNumber,
+          branch: selectedComplaint.branch,
+          freezeReason: selectedComplaint.freezeReason,
+        };
+
+        // Make the API request
+        const response = await axios.post(
+          "https://cyber-secure.onrender.com/v1/admin/verifyComplaint",
+          requestData,
+          { withCredentials: true }
+        );
+
+        // Log the response (adjust as needed)
+        console.log("Verification response:", response.data);
+
+        // Close the details modal
+        onClose();
+      } catch (error) {
+        console.error("Error verifying complaint:", error);
+        // Handle error as needed
+      }
+    }
   };
 
   const handleDenyClick = () => {
@@ -137,7 +168,7 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
             I have read all documents and evidence
           </label>
         </div>
-        <div className="flex gap-x-4 my-4">
+        <div className="flex w-full gap-x-4 my-4">
           <button
             className={`bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 ${
               !readConfirmation && "opacity-50 cursor-not-allowed"
@@ -169,13 +200,13 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
           ></textarea>
           <div className="flex justify-end">
             <button
-              className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 mr-2"
+              className="bg-red-500 text-white px-4 py-2 rounded-xl hover:bg-red-600 mr-2"
               onClick={handleDenyConfirm}
             >
               Confirm
             </button>
             <button
-              className="bg-gray-300 text-gray-800 px-4 py-2 rounded-full hover:bg-gray-400"
+              className="bg-gray-300 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-400"
               onClick={handleDenyCancel}
             >
               Cancel
