@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 
 const ComplaintDetails = ({ selectedComplaint, onClose }) => {
   return (
-    <div className="absolute top-8 left-12 w-3/4 overflow-y-auto p-4 bg-white rounded-3xl z-50">
-      <div className="flex flex-col pl-6">
+    <div className="absolute top-6 left-4 w-full overflow-y-auto p-4 bg-white rounded-3xl z-50">
+      <div className="flex flex-col pl-8">
       <button
         className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600"
         onClick={onClose}
