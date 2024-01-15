@@ -6,7 +6,7 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
       <div className="flex flex-col ">
         <h1 className="font-semibold text-xl py-4">Complaint Details</h1>
         <div className="flex gap-x-20">
-          <div className="w-{405px} h-{248px} object-cover">
+          <div className="w-96 h-48 object-cover">
             <img src={selectedComplaint.nationalIdImageUrl} alt="" />
           </div>
           <div className="flex flex-col gap-y-2">
