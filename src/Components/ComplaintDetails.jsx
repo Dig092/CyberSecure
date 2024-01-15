@@ -2,8 +2,14 @@ import PropTypes from "prop-types";
 
 const ComplaintDetails = ({ selectedComplaint, onClose }) => {
   return (
-    <div className="absolute top-24 left-24 overflow-y-auto p-4 bg-white rounded-3xl z-50">
+    <div className="absolute top-16 left-20 overflow-y-auto p-4 bg-white rounded-3xl z-50">
       <div className="flex flex-col pl-6">
+      <button
+        className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600"
+        onClick={onClose}
+      >
+        Close Details
+      </button>
         <h1 className="font-semibold text-xl py-4">Complaint Details</h1>
         <div className="flex gap-x-20">
           <div className="">
@@ -36,13 +42,6 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
           <img src={selectedComplaint.nationalIdImageUrl} alt="" />
         </div>
       </div>
-
-      <button
-        className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600"
-        onClick={onClose}
-      >
-        Close Details
-      </button>
     </div>
   );
 };
