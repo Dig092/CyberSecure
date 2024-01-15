@@ -1,46 +1,129 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 const ComplaintDetails = ({ selectedComplaint, onClose }) => {
+  const [readConfirmation, setReadConfirmation] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setReadConfirmation(!readConfirmation);
+  };
+
+  const handleVerifyClick = () => {
+    // Perform verification logic here
+    // For now, just log a message
+    console.log("Verification clicked");
+  };
   return (
-    <div className="absolute top-6 left-6 w-full overflow-y-auto p-4 bg-white rounded-3xl z-4">
+    <div className="absolute top-6 left-6 w-full h-full overflow-y-auto p-4 bg-white rounded-3xl z-4">
       <div className="flex flex-col pl-8">
-      <button
-        className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600"
-        onClick={onClose}
-      >
-        Close Details
-      </button>
-        <h1 className="font-semibold text-xl py-4">Complaint Details</h1>
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600"
+          onClick={onClose}
+        >
+          Close Details
+        </button>
+        <h1 className="font-bold text-2xl py-4">Complaint Details</h1>
         <div className="flex gap-x-20">
           <div className="">
-            <img className="w-64 h-32 object-contain" src={selectedComplaint.nationalIdImageUrl} alt="" />
+            <img
+              className="w-64 h-32 object-contain"
+              src={selectedComplaint.nationalIdImageUrl}
+              alt=""
+            />
           </div>
           <div className="flex flex-col gap-y-2">
-            <h1> <span className="font-semibold text-lg">Name</span> : {selectedComplaint.user.name}</h1>
-            <h1> <span className="font-semibold text-lg">Gender</span> : {selectedComplaint.gender}</h1>
-            <h1> <span className="font-semibold text-lg">Country</span> : {selectedComplaint.country}</h1>
-            <h1> <span className="font-semibold text-lg">State</span> : {selectedComplaint.state}</h1>
-            <h1> <span className="font-semibold text-lg">District</span> : {selectedComplaint.district}</h1>
+            <h1>
+              {" "}
+              <span className="font-semibold text-lg">Name</span> :{" "}
+              {selectedComplaint.user.name}
+            </h1>
+            <h1>
+              {" "}
+              <span className="font-semibold text-lg">Gender</span> :{" "}
+              {selectedComplaint.gender}
+            </h1>
+            <h1>
+              {" "}
+              <span className="font-semibold text-lg">Country</span> :{" "}
+              {selectedComplaint.country}
+            </h1>
+            <h1>
+              {" "}
+              <span className="font-semibold text-lg">State</span> :{" "}
+              {selectedComplaint.state}
+            </h1>
+            <h1>
+              {" "}
+              <span className="font-semibold text-lg">District</span> :{" "}
+              {selectedComplaint.district}
+            </h1>
           </div>
           <div className="flex flex-col gap-y-2">
-            <h1><span className="font-semibold text-lg">House No.</span> : {selectedComplaint.houseNo}</h1>
-            <h1><span className="font-semibold text-lg">Street Name</span> : {selectedComplaint.streetName}</h1>
-            <h1><span className="font-semibold text-lg">Nearest Poice Station</span>
-               : {selectedComplaint.nearestPoliceStation}
+            <h1>
+              <span className="font-semibold text-lg">House No.</span> :{" "}
+              {selectedComplaint.houseNo}
+            </h1>
+            <h1>
+              <span className="font-semibold text-lg">Street Name</span> :{" "}
+              {selectedComplaint.streetName}
+            </h1>
+            <h1>
+              <span className="font-semibold text-lg">
+                Nearest Poice Station
+              </span>
+              : {selectedComplaint.nearestPoliceStation}
             </h1>
           </div>
         </div>
-        <h1 className="font-semibold text-xl py-4">Incident Details</h1>
+        <h1 className="font-bold text-2xl py-4">Incident Details</h1>
         <div className="flex flex-col gap-y-2">
-          <h1> <span className="font-semibold text-lg">Category</span> : {selectedComplaint.user.category}</h1>
-          <h1> <span className="font-semibold text-lg">Sub-Category</span> : {selectedComplaint.subcategory}</h1>
-          <h1> <span className="font-semibold text-lg">Date</span> : {selectedComplaint.date}</h1>
-          <h1> <span className="font-semibold text-lg">Time</span> : {selectedComplaint.time}</h1>
+          <h1>
+            {" "}
+            <span className="font-semibold text-lg">Category</span> :{" "}
+            {selectedComplaint.user.category}
+          </h1>
+          <h1>
+            {" "}
+            <span className="font-semibold text-lg">Sub-Category</span> :{" "}
+            {selectedComplaint.subcategory}
+          </h1>
+          <h1>
+            {" "}
+            <span className="font-semibold text-lg">Date</span> :{" "}
+            {selectedComplaint.date}
+          </h1>
+          <h1>
+            {" "}
+            <span className="font-semibold text-lg">Time</span> :{" "}
+            {selectedComplaint.time}
+          </h1>
         </div>
-        <h1 className="font-semibold text-xl py-4">Evidence / Important Documents</h1>
+        <h1 className="font-semibold text-2xl py-4">
+          Evidence / Important Documents
+        </h1>
         <div>
           <img src={selectedComplaint.nationalIdImageUrl} alt="" />
         </div>
+        <div className="flex items-center gap-x-2 my-4">
+          <input
+            type="checkbox"
+            id="readConfirmation"
+            checked={readConfirmation}
+            onChange={handleCheckboxChange}
+          />
+          <label htmlFor="readConfirmation">
+            I have read all documents and evidence
+          </label>
+        </div>
+        <button
+          className={`bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 ${
+            !readConfirmation && "opacity-50 cursor-not-allowed"
+          }`}
+          onClick={handleVerifyClick}
+          disabled={!readConfirmation}
+        >
+          Verify
+        </button>
       </div>
     </div>
   );
