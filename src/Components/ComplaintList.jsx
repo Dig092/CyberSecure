@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
-import user from "../assets/images/UserLogin.png";
+import user from "../assets/icon/user.png";
 
 const styles = {
     container: {
-      maxHeight: "300px", // Set the maximum height as needed
+      maxHeight: "280px", // Set the maximum height as needed
       overflowY: "auto", // Add a scrollbar when content overflows
     },
     // Add more styles as needed
