@@ -5,16 +5,16 @@ import user from "../assets/icon/user.png";
 
 const styles = {
   container: {
-    maxHeight: "280px", // Set the maximum height as needed
-    overflowY: "auto", // Add a scrollbar when content overflows
+    maxHeight: "285px",
+    overflowY: "auto",
   },
-  // Add more styles as needed
 };
 
 const ComplaintList = ({ complaints }) => {
   const [selectedComplaint, setSelectedComplaint] = useState(null);
 
   const handleViewClick = (complaint) => {
+    console.log("View button clicked");
     setSelectedComplaint(complaint);
   };
 
