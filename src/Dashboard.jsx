@@ -80,28 +80,31 @@ const Dashboard = () => {
                   <img className="w-24" src={CTA} alt="" />
                 </a>
               </div>
-              {complaints.map((complaint, index) => (
-                <div
-                  key={index}
-                  className="m-4 rounded px-4 py-2"
-                  style={{ boxShadow: "-4px 4px 12px 0px rgba(0, 0, 0, 0.06)" }}
-                >
-                  <div className="flex items-center justify-between gap-4 ">
-                    <div className="flex items-center gap-4">
-                      <img className="w-12" src={user} alt="" />
-                      <div className="font-semibold">
-                        <h1>{complaint.name}</h1>
-                        <h1>
-                          {complaint.district}, {complaint.state}
-                        </h1>
+              {Array.isArray(complaints) &&
+                complaints.map((complaint, index) => (
+                  <div
+                    key={index}
+                    className="m-4 rounded px-4 py-2"
+                    style={{
+                      boxShadow: "-4px 4px 12px 0px rgba(0, 0, 0, 0.06)",
+                    }}
+                  >
+                    <div className="flex items-center justify-between gap-4 ">
+                      <div className="flex items-center gap-4">
+                        <img className="w-12" src={user} alt="" />
+                        <div className="font-semibold">
+                          <h1>{complaint.name}</h1>
+                          <h1>
+                            {complaint.district}, {complaint.state}
+                          </h1>
+                        </div>
                       </div>
+                      <button className="bg-blue-500 px-8 py-2 rounded-md text-white">
+                        View
+                      </button>
                     </div>
-                    <button className="bg-blue-500 px-8 py-2 rounded-md text-white">
-                      View
-                    </button>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
           <div className="flex flex-col items-center">
