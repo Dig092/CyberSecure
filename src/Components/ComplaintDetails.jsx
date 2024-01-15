@@ -2,12 +2,12 @@ import PropTypes from "prop-types";
 
 const ComplaintDetails = ({ selectedComplaint, onClose }) => {
   return (
-    <div className="fixed top-28 right-10 overflow-y-auto p-4 bg-white rounded-3xl z-50">
+    <div className="absolute top-28 right-0 overflow-y-auto p-4 bg-white rounded-3xl z-50">
       <div className="flex flex-col ">
         <h1 className="font-semibold text-xl py-4">Complaint Details</h1>
         <div className="flex gap-x-20">
           <div className="">
-            <img className="w-48 h-24 object-cover" src={selectedComplaint.nationalIdImageUrl} alt="" />
+            <img className="w-64 h-32 object-contain" src={selectedComplaint.nationalIdImageUrl} alt="" />
           </div>
           <div className="flex flex-col gap-y-2">
             <h1> <span className="font-semibold text-lg">Name</span> : {selectedComplaint.user.name}</h1>
