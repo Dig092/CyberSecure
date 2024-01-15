@@ -6,7 +6,7 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
       <div className="flex flex-col ">
         <h1 className="font-semibold text-xl py-4">Complaint Details</h1>
         <div className="flex gap-x-20">
-          <div className="w-96 h-48 object-cover">
+          <div className="w-96 h-48 object-contain">
             <img src={selectedComplaint.nationalIdImageUrl} alt="" />
           </div>
           <div className="flex flex-col gap-y-2">
@@ -20,7 +20,7 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
             <h1><span className="font-semibold text-lg">House No.</span> : {selectedComplaint.houseNo}</h1>
             <h1><span className="font-semibold text-lg">Street Name</span> : {selectedComplaint.streetName}</h1>
             <h1><span className="font-semibold text-lg">Nearest Poice Station</span>
-              Nearest Poice Station : {selectedComplaint.nearestPoliceStation}
+               : {selectedComplaint.nearestPoliceStation}
             </h1>
           </div>
         </div>
@@ -33,7 +33,7 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
         </div>
         <h1 className="font-semibold text-xl py-4">Evidence / Important Documents</h1>
         <div>
-          <img src="" alt="" />
+          <img src={selectedComplaint.nationalIdImageUrl} alt="" />
         </div>
       </div>
 
