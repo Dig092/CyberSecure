@@ -55,10 +55,38 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
     setDismissalReason(e.target.value);
   };
 
-  const handleDenyConfirm = () => {
-    // Perform denial logic here, using dismissalReason
-    // For now, just log a message
-    console.log("Deny clicked with reason:", dismissalReason);
+  const handleDenyConfirm = async () => {
+    try {
+      // Prepare data for the API request
+      const requestData = {
+        acknowledgementNumber: selectedComplaint.acknowledgementNumber,
+        verificationStatus: false,
+        dismissalStatus: true,
+        dismissalReason: dismissalReason,
+        actionTaken: "dismissed",
+        bankName: selectedComplaint.bankName,
+        holderName: selectedComplaint.holderName,
+        accountNumber: selectedComplaint.accountNumber,
+        branch: selectedComplaint.branch,
+        freezeReason: selectedComplaint.freezeReason,
+      };
+
+      // Make the API request
+      const response = await axios.post(
+        "https://cyber-secure.onrender.com/v1/admin/verifyComplaint",
+        requestData,
+        { withCredentials: true }
+      );
+
+      // Log the response (adjust as needed)
+      console.log("Verification response:", response.data);
+
+      // Close the details modal
+      onClose();
+    } catch (error) {
+      console.error("Error verifying complaint:", error);
+      // Handle error as needed
+    }
     setShowDenyPopup(false);
   };
 
@@ -222,6 +250,8 @@ ComplaintDetails.propTypes = {
   selectedComplaint: PropTypes.shape({
     user: PropTypes.shape({
       name: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired, // Add missing prop types
+      // Add more missing prop types as needed
     }),
     gender: PropTypes.string.isRequired,
     country: PropTypes.string.isRequired,
@@ -230,10 +260,16 @@ ComplaintDetails.propTypes = {
     houseNo: PropTypes.string.isRequired,
     streetName: PropTypes.string.isRequired,
     nearestPoliceStation: PropTypes.string.isRequired,
-    category: PropTypes.string.isRequired,
     subcategory: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     time: PropTypes.string.isRequired,
+    acknowledgementNumber: PropTypes.string.isRequired,
+    bankName: PropTypes.string.isRequired,
+    holderName: PropTypes.string.isRequired,
+    accountNumber: PropTypes.string.isRequired,
+    branch: PropTypes.string.isRequired,
+    freezeReason: PropTypes.string.isRequired,
+    nationalIdImageUrl: PropTypes.string.isRequired,
     // Add more PropTypes as needed
   }).isRequired,
   onClose: PropTypes.func.isRequired,
