@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 
 const ComplaintDetails = ({ selectedComplaint, onClose }) => {
-  console.log("Selected Complaint:", selectedComplaint);
 
   return (
     <div className="fixed inset-0 overflow-y-auto p-4 bg-gray-800 bg-opacity-75 z-50">
@@ -27,6 +26,12 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
           <p>
             <span className="font-bold">District:</span>{" "}
             {selectedComplaint.district}
+          </p>
+          <p>
+            <span className="font-bold">State:</span> {selectedComplaint.state}
+          </p>
+          <p>
+            <span className="font-bold">State:</span> {selectedComplaint.state}
           </p>
           <p>
             <span className="font-bold">State:</span> {selectedComplaint.state}

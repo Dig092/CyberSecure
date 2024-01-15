@@ -14,7 +14,6 @@ const ComplaintList = ({ complaints }) => {
   const [selectedComplaint, setSelectedComplaint] = useState(null);
 
   const handleViewClick = (complaint) => {
-    console.log("View button clicked");
     setSelectedComplaint(complaint);
   };
 

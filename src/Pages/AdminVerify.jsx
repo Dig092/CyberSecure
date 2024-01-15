@@ -2,7 +2,6 @@ import { useState, useEffect,useRef } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useAuth } from "../AuthContext";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 
@@ -11,7 +10,6 @@ const AdminVerify = () => {
     const [verificationCodes, setVerificationCodes] = useState(["", "", "", ""]);
     const [userEmail, setUserEmail] = useState("");
     const inputRefs = [useRef(), useRef(), useRef(), useRef()];
-    const { setAuthData } = useAuth();
   
     useEffect(() => {
       // Retrieve email from local storage

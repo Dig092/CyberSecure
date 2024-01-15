@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SideBar from "./Components/SideBar";
+import MainBar from "./Components/MainBar";
 import ComplaintList from "./Components/ComplaintList";
 
-import email from "./assets/icon/mail.png";
-import notification from "./assets/icon/notification.png";
 import active from "./assets/icon/active.png";
 import suspended from "./assets/icon/suspended.png";
 import resolved from "./assets/icon/resolved.png";
@@ -39,19 +38,10 @@ const Dashboard = () => {
       <SideBar />
 
       <div className="flex flex-col w-screen h-full">
-        <div className="bg-[#F2F6FF] flex w-[76.4rem] backdrop-blur-3xl bg-opacity-80 h-1/6 items-center justify-between p-8 fixed right-0 z-10">
-          <div className="flex flex-col ">
-            <h1 className="text-xs font-semibold">Hi Dhruval</h1>
-            <h1 className="text-4xl font-semibold">Welcome to CyberSecure!</h1>
-          </div>
-          <div className="flex gap-12 pr-8">
-            <img className="w-7 h-7" src={email} alt="" />
-            <img className="w-7 h-7" src={notification} alt="" />
-          </div>
-        </div>
-
-        <div className="flex bg-[#F2F6FF]  absolute top-28 right-0">
-          <div className="flex flex-col items-center m-6">
+        
+      <MainBar/>
+        <div className="CenterBar flex bg-[#F2F6FF]  absolute top-28 right-0">
+          <div className="CenterLeftBar flex flex-col items-center m-6">
             <div className="flex">
               <div className="flex items-center bg-white mb-6 mr-4  pr-12 pl-4 rounded-2xl gap-2">
                 <img className="w-24" src={active} alt="" />
@@ -86,7 +76,7 @@ const Dashboard = () => {
 
             </div>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="CenterRightBar flex flex-col items-center">
             <div className="bg-white rounded-2xl flex flex-col items-center p-12 mt-6 h-2/5 w-72">
               <div className="flex flex-col items-center">
                 <img className="w-24 pb-4" src={user} alt="" />
