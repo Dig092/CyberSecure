@@ -1,11 +1,17 @@
-import React from "react";
 import PropTypes from "prop-types";
 import user from "../assets/images/UserLogin.png";
 
+const styles = {
+    container: {
+      maxHeight: "300px", // Set the maximum height as needed
+      overflowY: "auto", // Add a scrollbar when content overflows
+    },
+    // Add more styles as needed
+  };
+
 const ComplaintList = ({ complaints }) => {
   return (
-    <div className="complaint-list-container">
-      <h1>Complaint List</h1>
+    <div style={styles.container} className="complaint-list-container">
       <ul className="complaint-list">
         {complaints.map((complaint) => (
           <li
