@@ -39,9 +39,9 @@ const AdminVerify = () => {
   
         // Assuming the API returns success status
         if (response.status === 200 || response.status === 201) {
-          // Store the access token in context
-          const accessToken = response.data.accessToken;
-          setAuthData(accessToken);
+          // // Store the access token in context
+          // const accessToken = response.data.accessToken;
+          // setAuthData(accessToken);
   
           toast.success("Account verified successfully!", {
             position: toast.POSITION.TOP_RIGHT,

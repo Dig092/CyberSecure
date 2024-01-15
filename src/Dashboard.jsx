@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import SideBar from "./Components/SideBar";
 
-
 import email from "./assets/icon/mail.png";
 import notification from "./assets/icon/notification.png";
 import active from "./assets/icon/active.png";
@@ -22,7 +21,8 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://cyber-secure.onrender.com/v1/admin/getComplaints"
+          "https://cyber-secure.onrender.com/v1/admin/getComplaints",
+          { withCredentials: true }
         );
         setComplaints(response.data);
       } catch (error) {
@@ -34,7 +34,7 @@ const Dashboard = () => {
 
   return (
     <div className="bg-[#F2F6FF] flex w-screen h-full">
-      <SideBar/>
+      <SideBar />
 
       <div className="flex flex-col w-screen h-full">
         <div className="bg-[#F2F6FF] flex w-[76.4rem] backdrop-blur-3xl bg-opacity-80 h-1/6 items-center justify-between p-8 fixed right-0 z-10">
