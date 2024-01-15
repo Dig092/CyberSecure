@@ -9,27 +9,27 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
           <div className="w-{405px} h-{248px} object-cover">
             <img src={selectedComplaint.nationalIdImageUrl} alt="" />
           </div>
-          <div className="flex flex-col">
-            <h1>Name : {selectedComplaint.user.name}</h1>
-            <h1>Gender : {selectedComplaint.gender}</h1>
-            <h1>Country : {selectedComplaint.country}</h1>
-            <h1>State : {selectedComplaint.state}</h1>
-            <h1>District : {selectedComplaint.district}</h1>
+          <div className="flex flex-col gap-y-2">
+            <h1> <span className="font-semibold text-lg">Name</span> : {selectedComplaint.user.name}</h1>
+            <h1> <span className="font-semibold text-lg">Gender</span> : {selectedComplaint.gender}</h1>
+            <h1> <span className="font-semibold text-lg">Country</span> : {selectedComplaint.country}</h1>
+            <h1> <span className="font-semibold text-lg">State</span> : {selectedComplaint.state}</h1>
+            <h1> <span className="font-semibold text-lg">District</span> : {selectedComplaint.district}</h1>
           </div>
-          <div className="flex flex-col">
-            <h1>House No. : {selectedComplaint.houseNo}</h1>
-            <h1>street Name : {selectedComplaint.streetName}</h1>
-            <h1>
+          <div className="flex flex-col gap-y-2">
+            <h1><span className="font-semibold text-lg">House No.</span> : {selectedComplaint.houseNo}</h1>
+            <h1><span className="font-semibold text-lg">Street Name</span> : {selectedComplaint.streetName}</h1>
+            <h1><span className="font-semibold text-lg">Nearest Poice Station</span>
               Nearest Poice Station : {selectedComplaint.nearestPoliceStation}
             </h1>
           </div>
         </div>
         <h1 className="font-semibold text-xl py-4">Incident Details</h1>
-        <div className="flex flex-col">
-          <h1>Category : {selectedComplaint.user.category}</h1>
-          <h1>Sub-Category : {selectedComplaint.subcategory}</h1>
-          <h1>Date : {selectedComplaint.date}</h1>
-          <h1>Time : {selectedComplaint.time}</h1>
+        <div className="flex flex-col gap-y-2">
+          <h1> <span className="font-semibold text-lg">Category</span> : {selectedComplaint.user.category}</h1>
+          <h1> <span className="font-semibold text-lg">Sub-Category</span> : {selectedComplaint.subcategory}</h1>
+          <h1> <span className="font-semibold text-lg">Date</span> : {selectedComplaint.date}</h1>
+          <h1> <span className="font-semibold text-lg">Time</span> : {selectedComplaint.time}</h1>
         </div>
         <h1 className="font-semibold text-xl py-4">Evidence / Important Documents</h1>
         <div>
