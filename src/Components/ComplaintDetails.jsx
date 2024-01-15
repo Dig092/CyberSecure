@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 
 const ComplaintDetails = ({ selectedComplaint, onClose }) => {
   return (
-    <div className="absolute top-28 right-0 overflow-y-auto p-4 bg-white rounded-3xl z-50">
-      <div className="flex flex-col ">
+    <div className="absolute top-24 left-24 overflow-y-auto p-4 bg-white rounded-3xl z-50">
+      <div className="flex flex-col pl-6">
         <h1 className="font-semibold text-xl py-4">Complaint Details</h1>
         <div className="flex gap-x-20">
           <div className="">
