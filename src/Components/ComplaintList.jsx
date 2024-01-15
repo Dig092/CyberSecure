@@ -1,11 +1,12 @@
+import React from "react";
 import PropTypes from "prop-types";
-import user from "../assets/images/UserLogin.png"
+import user from "../assets/images/UserLogin.png";
 
 const ComplaintList = ({ complaints }) => {
   return (
-    <div>
+    <div className="complaint-list-container">
       <h1>Complaint List</h1>
-      <ul>
+      <ul className="complaint-list">
         {complaints.map((complaint) => (
           <li
             key={complaint._id}
