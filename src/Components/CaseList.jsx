@@ -1,76 +1,108 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import PropTypes from "prop-types";
+import ComplaintDetails from "./ComplaintDetails";
 
-const CaseList = () => {
-  const [cases, setCases] = useState([]);
+import user from "../assets/icon/user.png";
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://cyber-secure.onrender.com/v1/admin/getComplaints",
-          { withCredentials: true }
-        );
-        setCases(response.data.complaints);
-      } catch (error) {
-        console.error("Error fetching cases", error);
-      }
-    };
-    fetchData();
-  }, []);
+const CaseList = ({ complaints }) => {
+  const [selectedComplaint, setSelectedComplaint] = React.useState(null);
 
-  const filterCases = (status) => {
-    return cases.filter((c) => c.verificationStatus && !c.dismissalStatus === status);
+  const handleViewClick = (complaint) => {
+    setSelectedComplaint(complaint);
   };
 
+  const handleCloseDetails = () => {
+    setSelectedComplaint(null);
+  };
+
+  const groupComplaintsByStatus = () => {
+    const groupedComplaints = {
+      active: [],
+      resolved: [],
+      suspended: [],
+    };
+
+    complaints.forEach((complaint) => {
+      if (!complaint.verificationStatus && !complaint.dismissalStatus) {
+        groupedComplaints.active.push(complaint);
+      } else if (complaint.verificationStatus && !complaint.dismissalStatus) {
+        groupedComplaints.resolved.push(complaint);
+      } else if (!complaint.verificationStatus && complaint.dismissalStatus) {
+        groupedComplaints.suspended.push(complaint);
+      }
+    });
+
+    return groupedComplaints;
+  };
+
+  const renderComplaints = (complaints) => {
+    return (
+      <ul className="complaint-list">
+        {complaints.map((complaint) => (
+          <li
+            key={complaint._id}
+            className="m-4 rounded px-4 py-2"
+            style={{
+              boxShadow: "-4px 4px 12px 0px rgba(0, 0, 0, 0.06)",
+            }}
+          >
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <img className="w-12" src={user} alt="" />
+                <div className="font-semibold">
+                  <h1>{complaint.user.name}</h1>
+                  <h1>
+                    {complaint.district}, {complaint.state}
+                  </h1>
+                </div>
+              </div>
+              <button
+                className="bg-blue-500 px-8 py-2 rounded-md text-white"
+                onClick={() => handleViewClick(complaint)}
+              >
+                View
+              </button>
+            </div>
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
+  const groupedComplaints = groupComplaintsByStatus();
+
   return (
-    <div className="flex flex-col pl-8">
-      <h1 className="font-bold text-2xl py-4">Active Cases</h1>
-      {filterCases(false).map((activeCase) => (
-        <CaseItem key={activeCase.acknowledgementNumber} caseData={activeCase} />
-      ))}
-
-      <h1 className="font-bold text-2xl py-4">Resolved Cases</h1>
-      {filterCases(false).map((resolvedCase) => (
-        <CaseItem key={resolvedCase.acknowledgementNumber} caseData={resolvedCase} />
-      ))}
-
-      <h1 className="font-bold text-2xl py-4">Suspended Cases</h1>
-      {filterCases(true).map((suspendedCase) => (
-        <CaseItem key={suspendedCase.acknowledgementNumber} caseData={suspendedCase} />
-      ))}
+    <div className="complaint-list-container">
+      {groupedComplaints.active.length > 0 && (
+        <div>
+          <h2 className="text-xl font-semibold">Active Cases</h2>
+          {renderComplaints(groupedComplaints.active)}
+        </div>
+      )}
+      {groupedComplaints.resolved.length > 0 && (
+        <div>
+          <h2 className="text-xl font-semibold">Resolved Cases</h2>
+          {renderComplaints(groupedComplaints.resolved)}
+        </div>
+      )}
+      {groupedComplaints.suspended.length > 0 && (
+        <div>
+          <h2 className="text-xl font-semibold">Suspended Cases</h2>
+          {renderComplaints(groupedComplaints.suspended)}
+        </div>
+      )}
+      {selectedComplaint && (
+        <ComplaintDetails
+          selectedComplaint={selectedComplaint}
+          onClose={handleCloseDetails}
+        />
+      )}
     </div>
   );
 };
 
-const CaseItem = ({ caseData }) => {
-  return (
-    <div className="flex gap-x-20">
-      {/* Display case details as needed */}
-      <div>
-        <img className="w-64 h-32 object-contain" src={caseData.nationalIdImageUrl} alt="" />
-      </div>
-      <div className="flex flex-col gap-y-2">
-        <h1>
-          <span className="font-semibold text-lg">Name</span> : {caseData.user.name}
-        </h1>
-        {/* Add more details as needed */}
-      </div>
-    </div>
-  );
-};
-
-CaseItem.propTypes = {
-  caseData: PropTypes.shape({
-    user: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }),
-    verificationStatus: PropTypes.bool.isRequired,
-    dismissalStatus: PropTypes.bool.isRequired,
-    nationalIdImageUrl: PropTypes.string.isRequired,
-    // Add more prop types as needed
-  }).isRequired,
+CaseList.propTypes = {
+  complaints: PropTypes.array.isRequired,
 };
 
 export default CaseList;
