@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ComplaintDetails from "./ComplaintDetails";
-
 import user from "../assets/icon/user.png";
 
 const CaseList = ({ complaints }) => {
@@ -22,15 +21,20 @@ const CaseList = ({ complaints }) => {
       suspended: [],
     };
 
-    complaints.forEach((complaint) => {
-      if (!complaint.verificationStatus && !complaint.dismissalStatus) {
-        groupedComplaints.active.push(complaint);
-      } else if (complaint.verificationStatus && !complaint.dismissalStatus) {
-        groupedComplaints.resolved.push(complaint);
-      } else if (!complaint.verificationStatus && complaint.dismissalStatus) {
-        groupedComplaints.suspended.push(complaint);
-      }
-    });
+    if (complaints) {
+      complaints.forEach((complaint) => {
+        if (!complaint.verificationStatus && !complaint.dismissalStatus) {
+          groupedComplaints.active.push(complaint);
+        } else if (
+          complaint.verificationStatus &&
+          !complaint.dismissalStatus
+        ) {
+          groupedComplaints.resolved.push(complaint);
+        } else if (!complaint.verificationStatus && complaint.dismissalStatus) {
+          groupedComplaints.suspended.push(complaint);
+        }
+      });
+    }
 
     return groupedComplaints;
   };
@@ -102,7 +106,7 @@ const CaseList = ({ complaints }) => {
 };
 
 CaseList.propTypes = {
-  complaints: PropTypes.array.isRequired,
+  complaints: PropTypes.array,
 };
 
 export default CaseList;
