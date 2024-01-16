@@ -80,7 +80,7 @@ const Dashboard = () => {
               </div>
               {showCaseList ? <CaseList /> : <ComplaintList complaints={complaints} />}
             </div>
-            <img className="w-full h-80" src={chart} alt="" />
+            <img className="w-full h-80 mt-6" src={chart} alt="" />
           </div>
           <div className="CenterRightBar flex flex-col items-center">
             <div className="bg-white rounded-2xl flex flex-col items-center p-12 mt-6 h-2/5 w-72">
