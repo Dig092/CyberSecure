@@ -14,6 +14,7 @@ import articles from "./assets/icon/articles.png";
 
 import chatbot from "./assets/images/Chatbot.png";
 import CTA from "./assets/images/CTA.png";
+import chart from "./assets/images/chart.png";
 
 const Dashboard = () => {
   const [complaints, setComplaints] = useState([]);
@@ -77,6 +78,7 @@ const Dashboard = () => {
                   <img className="w-24" src={CTA} alt="" />
                 </button>
               </div>
+              <img className="w-full h-80" src={chart} alt="" />
               {showCaseList ? <CaseList /> : <ComplaintList complaints={complaints} />}
             </div>
           </div>
