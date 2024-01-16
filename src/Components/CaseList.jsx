@@ -21,7 +21,6 @@ const CaseList = ({ complaints }) => {
       suspended: [],
     };
 
-    if (complaints) {
       complaints.forEach((complaint) => {
         if (!complaint.verificationStatus && !complaint.dismissalStatus) {
           groupedComplaints.active.push(complaint);
@@ -34,7 +33,7 @@ const CaseList = ({ complaints }) => {
           groupedComplaints.suspended.push(complaint);
         }
       });
-    }
+    
 
     return groupedComplaints;
   };
