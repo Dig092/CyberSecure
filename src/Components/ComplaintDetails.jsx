@@ -36,8 +36,7 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
         );
 
         // Log the response (adjust as needed)
-        console.log("Verification response:", response.data);
-
+        onVerify(selectedComplaint);
         // Close the details modal
         onClose();
       } catch (error) {
@@ -273,6 +272,7 @@ ComplaintDetails.propTypes = {
     // Add more PropTypes as needed
   }).isRequired,
   onClose: PropTypes.func.isRequired,
+  onVerify: PropTypes.func.isRequired,
 };
 
 export default ComplaintDetails;

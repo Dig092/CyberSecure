@@ -5,7 +5,7 @@ import user from "../assets/icon/user.png";
 
 const styles = {
   container: {
-    maxHeight: "285px",
+    innerHeight: "285px",
     overflowY: "auto",
   },
 };

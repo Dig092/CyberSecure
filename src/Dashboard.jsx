@@ -39,6 +39,19 @@ const Dashboard = () => {
     setShowCaseList(true);
   };
 
+  const handleRemoveComplaint = (verifiedComplaint) => {
+    setComplaints((prevComplaints) =>
+      prevComplaints.filter((complaint) => complaint._id !== verifiedComplaint._id)
+    );
+  };
+
+  const handleVerifyComplaint = (verifiedComplaint) => {
+    setComplaints((prevComplaints) =>
+      prevComplaints.filter((complaint) => complaint._id !== verifiedComplaint._id)
+    );
+  };
+
+
   return (
     <div className="bg-[#F2F6FF] flex w-screen h-full">
       <SideBar />
@@ -78,7 +91,15 @@ const Dashboard = () => {
                   <img className="w-24" src={CTA} alt="" />
                 </button>
               </div>
-              {showCaseList ? <CaseList /> : <ComplaintList complaints={complaints} />}
+              {showCaseList ? (
+                <CaseList onRemoveComplaint={handleRemoveComplaint} />
+              ) : (
+                <ComplaintList
+                  complaints={complaints}
+                  onRemoveComplaint={handleRemoveComplaint}
+                  onVerify={handleVerifyComplaint} 
+                />
+              )}
             </div>
             <img className="w-full h-80 pt-6" src={chart} alt="" />
           </div>
