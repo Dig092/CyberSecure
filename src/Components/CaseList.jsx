@@ -4,6 +4,7 @@ import ComplaintDetails from "./ComplaintDetails";
 import user from "../assets/icon/user.png";
 
 const CaseList = ({ complaints }) => {
+    console.log(complaints);
   const [selectedComplaint, setSelectedComplaint] = React.useState(null);
 
   const handleViewClick = (complaint) => {
