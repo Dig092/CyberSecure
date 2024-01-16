@@ -3,6 +3,7 @@ import axios from "axios";
 import SideBar from "./Components/SideBar";
 import MainBar from "./Components/MainBar";
 import ComplaintList from "./Components/ComplaintList";
+import CaseList from "./Components/CaseList";
 
 import active from "./assets/icon/active.png";
 import suspended from "./assets/icon/suspended.png";
@@ -16,6 +17,7 @@ import CTA from "./assets/images/CTA.png";
 
 const Dashboard = () => {
   const [complaints, setComplaints] = useState([]);
+  const [showCaseList, setShowCaseList] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +34,9 @@ const Dashboard = () => {
     fetchData();
   }, []);
   
+  const handleViewAllClick = () => {
+    setShowCaseList(true);
+  };
 
   return (
     <div className="bg-[#F2F6FF] flex w-screen h-full">
@@ -68,12 +73,11 @@ const Dashboard = () => {
             <div className="bg-white flex flex-col w-full px-4 rounded-2xl">
               <div className="flex items-center justify-between px-4">
                 <div className="text-xl font-bold my-6">Complaint List</div>
-                <a href="">
+                <button onClick={handleViewAllClick}>
                   <img className="w-24" src={CTA} alt="" />
-                </a>
+                </button>
               </div>
-              <ComplaintList complaints={complaints} />
-
+              {showCaseList ? <CaseList /> : <ComplaintList complaints={complaints} />}
             </div>
           </div>
           <div className="CenterRightBar flex flex-col items-center">

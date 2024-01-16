@@ -63,7 +63,7 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
         verificationStatus: false,
         dismissalStatus: true,
         dismissalReason: dismissalReason,
-        actionTaken: "dismissed",
+        actionTaken: "suspended",
         bankName: selectedComplaint.bankName,
         holderName: selectedComplaint.holderName,
         accountNumber: selectedComplaint.accountNumber,
