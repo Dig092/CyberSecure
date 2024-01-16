@@ -3,7 +3,6 @@ import axios from "axios";
 import SideBar from "./Components/SideBar";
 import MainBar from "./Components/MainBar";
 import ComplaintList from "./Components/ComplaintList";
-import CaseList from "./Components/CaseList";
 
 import active from "./assets/icon/active.png";
 import suspended from "./assets/icon/suspended.png";
@@ -18,7 +17,6 @@ import chart from "./assets/images/chart.png";
 
 const Dashboard = () => {
   const [complaints, setComplaints] = useState([]);
-  const [showCaseList, setShowCaseList] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,31 +32,29 @@ const Dashboard = () => {
     };
     fetchData();
   }, []);
-  
-  const handleViewAllClick = () => {
-    setShowCaseList(true);
-  };
 
   const handleRemoveComplaint = (verifiedComplaint) => {
     setComplaints((prevComplaints) =>
-      prevComplaints.filter((complaint) => complaint._id !== verifiedComplaint._id)
+      prevComplaints.filter(
+        (complaint) => complaint._id !== verifiedComplaint._id
+      )
     );
   };
 
   const handleVerifyComplaint = (verifiedComplaint) => {
     setComplaints((prevComplaints) =>
-      prevComplaints.filter((complaint) => complaint._id !== verifiedComplaint._id)
+      prevComplaints.filter(
+        (complaint) => complaint._id !== verifiedComplaint._id
+      )
     );
   };
-
 
   return (
     <div className="bg-[#F2F6FF] flex w-screen h-full">
       <SideBar />
 
       <div className="flex flex-col w-screen h-full">
-        
-      <MainBar/>
+        <MainBar />
         <div className="CenterBar flex bg-[#F2F6FF]  absolute top-28 right-0">
           <div className="CenterLeftBar flex flex-col items-center m-6">
             <div className="flex">
@@ -87,19 +83,16 @@ const Dashboard = () => {
             <div className="bg-white flex flex-col w-full px-4 rounded-2xl">
               <div className="flex items-center justify-between px-4">
                 <div className="text-xl font-bold my-6">Complaint List</div>
-                <button onClick={handleViewAllClick}>
+                <button>
                   <img className="w-24" src={CTA} alt="" />
                 </button>
               </div>
-              {showCaseList ? (
-                <CaseList onRemoveComplaint={handleRemoveComplaint} />
-              ) : (
-                <ComplaintList
-                  complaints={complaints}
-                  onRemoveComplaint={handleRemoveComplaint}
-                  onVerify={handleVerifyComplaint} 
-                />
-              )}
+
+              <ComplaintList
+                complaints={complaints}
+                onRemoveComplaint={handleRemoveComplaint}
+                onVerify={handleVerifyComplaint}
+              />
             </div>
             <img className="w-full h-80 pt-6" src={chart} alt="" />
           </div>
@@ -134,4 +127,5 @@ const Dashboard = () => {
     </div>
   );
 };
+
 export default Dashboard;
