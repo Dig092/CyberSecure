@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import SideBar from "./Components/SideBar";
 import MainBar from "./Components/MainBar";
+// import ComplaintDetails from "./Components/ComplaintDetails";
 import ComplaintList from "./Components/ComplaintList";
 
 import active from "./assets/icon/active.png";
@@ -17,6 +18,7 @@ import chart from "./assets/images/chart.png";
 
 const Dashboard = () => {
   const [complaints, setComplaints] = useState([]);
+  // const [selectedComplaint, setSelectedComplaint] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,14 +35,6 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
-  const handleRemoveComplaint = (verifiedComplaint) => {
-    setComplaints((prevComplaints) =>
-      prevComplaints.filter(
-        (complaint) => complaint._id !== verifiedComplaint._id
-      )
-    );
-  };
-
   const handleVerifyComplaint = (verifiedComplaint) => {
     setComplaints((prevComplaints) =>
       prevComplaints.filter(
@@ -49,16 +43,24 @@ const Dashboard = () => {
     );
   };
 
+  // const handleComplaintClick = (complaint) => {
+  //   setSelectedComplaint(complaint);
+  // };
+
+  // const handleCloseDetails = () => {
+  //   setSelectedComplaint(null);
+  // };
+
   return (
     <div className="bg-[#F2F6FF] flex w-screen h-full">
       <SideBar />
 
       <div className="flex flex-col w-screen h-full">
         <MainBar />
-        <div className="CenterBar flex bg-[#F2F6FF]  absolute top-28 right-0">
+        <div className="CenterBar flex bg-[#F2F6FF] absolute top-28 right-0">
           <div className="CenterLeftBar flex flex-col items-center m-6">
             <div className="flex">
-              <div className="flex items-center bg-white mb-6 mr-4  pr-12 pl-4 rounded-2xl gap-2">
+              <div className="flex items-center bg-white mb-6 mr-4 pr-12 pl-4 rounded-2xl gap-2">
                 <img className="w-24" src={active} alt="" />
                 <div>
                   <h1>Active Cases</h1>
@@ -87,11 +89,10 @@ const Dashboard = () => {
                   <img className="w-24" src={CTA} alt="" />
                 </button>
               </div>
-
               <ComplaintList
                 complaints={complaints}
-                onRemoveComplaint={handleRemoveComplaint}
-                onVerify={handleVerifyComplaint}
+                // onComplaintClick={handleComplaintClick}
+                onVerify={handleVerifyComplaint} // Add this line
               />
             </div>
             <img className="w-full h-80 pt-6" src={chart} alt="" />

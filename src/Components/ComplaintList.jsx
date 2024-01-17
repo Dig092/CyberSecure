@@ -10,7 +10,7 @@ const styles = {
   },
 };
 
-const ComplaintList = ({ complaints }) => {
+const ComplaintList = ({ complaints, onVerify }) => {
   const [selectedComplaint, setSelectedComplaint] = useState(null);
 
   const handleViewClick = (complaint) => {
@@ -20,6 +20,12 @@ const ComplaintList = ({ complaints }) => {
   const handleCloseDetails = () => {
     setSelectedComplaint(null);
   };
+
+  // const handleVerifyComplaint = (verifiedComplaint) => {
+  //   onVerify(verifiedComplaint); // Notify the parent component
+  //   setSelectedComplaint(null); // Close the details modal
+  // };
+
   return (
     <div style={styles.container} className="complaint-list-container">
       <ul className="complaint-list">
@@ -55,6 +61,7 @@ const ComplaintList = ({ complaints }) => {
         <ComplaintDetails
           selectedComplaint={selectedComplaint}
           onClose={handleCloseDetails}
+          onVerify={onVerify} // Pass the onVerify prop here
         />
       )}
     </div>
@@ -72,6 +79,7 @@ ComplaintList.propTypes = {
       state: PropTypes.string.isRequired,
     })
   ).isRequired,
+  onVerify: PropTypes.func.isRequired, // Callback for verifying a complaint
 };
 
 export default ComplaintList;

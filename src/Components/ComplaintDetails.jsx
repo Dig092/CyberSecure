@@ -11,44 +11,36 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
     setReadConfirmation(!readConfirmation);
   };
 
-  const handleVerifyClick = async () => {
-    if (readConfirmation) {
-      try {
-        // Prepare data for the API request
-        const requestData = {
-          acknowledgementNumber: selectedComplaint.acknowledgementNumber,
-          verificationStatus: true,
-          dismissalStatus: false,
-          dismissalReason: "Reason for dismissal",
-          actionTaken: "Resolved",
-          bankName: selectedComplaint.bankName,
-          holderName: selectedComplaint.holderName,
-          accountNumber: selectedComplaint.accountNumber,
-          branch: selectedComplaint.branch,
-          freezeReason: selectedComplaint.freezeReason,
-        };
+  // const handleVerifyClick = async () => {
+  //   if (readConfirmation) {
+  //     try {
+  //       // Prepare data for the API request
+  //       const requestData = {
+  //         acknowledgementNumber: selectedComplaint.acknowledgementNumber,
+  //         verificationStatus: true,
+  //         dismissalStatus: false,
+  //         dismissalReason: "Reason for dismissal",
+  //         actionTaken: "Resolved",
+  //         bankName: selectedComplaint.bankName,
+  //         holderName: selectedComplaint.holderName,
+  //         accountNumber: selectedComplaint.accountNumber,
+  //         branch: selectedComplaint.branch,
+  //         freezeReason: selectedComplaint.freezeReason,
+  //       };
 
-        // Make the API request
-        const response = await axios.post(
-          "https://cyber-secure.onrender.com/v1/admin/verifyComplaint",
-          requestData,
-          { withCredentials: true }
-        );
-
-        // Log the response (adjust as needed)
-        onVerify(selectedComplaint);
-        // Close the details modal
-        onClose();
-      } catch (error) {
-        console.error("Error verifying complaint:", error);
-        // Handle error as needed
-      }
-    }
-  };
-
-  const handleDenyClick = () => {
-    setShowDenyPopup(true);
-  };
+  //       // Make the API request
+  //       const response = await axios.post(
+  //         "https://cyber-secure.onrender.com/v1/admin/verifyComplaint",
+  //         requestData,
+  //         { withCredentials: true }
+  //       );
+  //       onClose();
+  //     } catch (error) {
+  //       console.error("Error verifying complaint:", error);
+  //       // Handle error as needed
+  //     }
+  //   }
+  // };
 
   const handleDismissalReasonChange = (e) => {
     setDismissalReason(e.target.value);
@@ -194,23 +186,6 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
           <label htmlFor="readConfirmation">
             I have read all documents and evidence
           </label>
-        </div>
-        <div className="flex w-full gap-x-4 my-4">
-          <button
-            className={`bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 ${
-              !readConfirmation && "opacity-50 cursor-not-allowed"
-            }`}
-            onClick={handleVerifyClick}
-            disabled={!readConfirmation}
-          >
-            Verify
-          </button>
-          <button
-            className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600"
-            onClick={handleDenyClick}
-          >
-            Deny
-          </button>
         </div>
       </div>
 
