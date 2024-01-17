@@ -55,7 +55,7 @@ const Dashboard = () => {
     <div className="bg-[#F2F6FF] flex w-screen h-full">
       <SideBar />
 
-      <div className="flex flex-col w-screen h-full">
+      <div className="flex flex-col w-3/4 h-full">
         <MainBar />
         <div className="CenterBar flex bg-[#F2F6FF] absolute top-28 right-0">
           <div className="CenterLeftBar flex flex-col items-center m-6">
