@@ -52,7 +52,7 @@ const Dashboard = () => {
   // };
 
   return (
-    <div className="bg-[#F2F6FF] flex w-screen h-full">
+    <div className="bg-[#F2F6FF] flex w-3/4 h-full">
       <SideBar />
 
       <div className="flex flex-col w-3/4 h-full">

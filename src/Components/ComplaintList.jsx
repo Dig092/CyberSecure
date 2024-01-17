@@ -5,7 +5,7 @@ import user from "../assets/icon/user.png";
 
 const styles = {
   container: {
-    Height: "285px",
+    maxHeight: "285px",
     overflowY: "auto",
   },
 };
@@ -61,7 +61,7 @@ const ComplaintList = ({ complaints, onVerify }) => {
         <ComplaintDetails
           selectedComplaint={selectedComplaint}
           onClose={handleCloseDetails}
-          onVerify={onVerify} // Pass the onVerify prop here
+          onVerify={onVerify} 
         />
       )}
     </div>
@@ -79,7 +79,7 @@ ComplaintList.propTypes = {
       state: PropTypes.string.isRequired,
     })
   ).isRequired,
-  onVerify: PropTypes.func.isRequired, // Callback for verifying a complaint
+  onVerify: PropTypes.func.isRequired, 
 };
 
 export default ComplaintList;
