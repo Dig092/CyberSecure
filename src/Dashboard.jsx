@@ -95,7 +95,7 @@ const Dashboard = () => {
                 onVerify={handleVerifyComplaint} // Add this line
               />
             </div>
-            <img className="w-full h-80 pt-6" src={chart} alt="" />
+            <img className="w-full h-84 pt-6" src={chart} alt="" />
           </div>
           <div className="CenterRightBar flex flex-col items-center">
             <div className="bg-white rounded-2xl flex flex-col items-center p-12 mt-6 h-2/5 w-72">

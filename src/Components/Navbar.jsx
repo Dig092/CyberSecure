@@ -13,7 +13,7 @@ const Navbar = () => {
                 <a className="px-4" href="">Home</a>
                 <a className="px-4" href="">About Us</a>
                 <a className="px-4" href="">Track Your Complaint</a>
-                <a className="px-4" href="">Resources</a>
+                <a className="px-4" href="">Cyber Comics</a>
                 <a className="px-4" href="">Contact Us</a>
             </div>
             <div className="buttons px-8 py-4">

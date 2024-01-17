@@ -4,10 +4,11 @@ import icon from "../assets/icon/Logo.png";
 import facebook from "../assets/icon/facebook.png";
 import twitter from "../assets/icon/twitter.png";
 import linkedin from "../assets/icon/linkedin.png";
-
 import email from "../assets/icon/emaill.png";
 import phone from "../assets/icon/phone.png";
 import location from "../assets/icon/location.png";
+
+const cyb-her = require("../assets/pdfs/cyb-her-handbook.pdf");
 
 const Footer = () => {
   return (
@@ -45,6 +46,7 @@ const Footer = () => {
               </a>
               <a href="">Resources</a>
               <a href="">Cyber HandBook</a>
+              <a href={cyb-her} target="_blank" rel="noopener noreferrer"> HandBook </a>
             </div>
             <div className="flex flex-col">
               <h1 className="font-bold pb-2">Social Profiles</h1>
