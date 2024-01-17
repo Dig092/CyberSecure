@@ -105,38 +105,38 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
           </div>
           <div className="flex flex-col gap-y-2">
             <h1>
-              {" "}
-              <span className="font-semibold text-lg">Name</span> :{" "}
+              
+              <span className="font-semibold text-lg">Name</span> :
               {selectedComplaint.user.name}
             </h1>
             <h1>
-              {" "}
-              <span className="font-semibold text-lg">Gender</span> :{" "}
+              
+              <span className="font-semibold text-lg">Gender</span> :
               {selectedComplaint.gender}
             </h1>
             <h1>
-              {" "}
-              <span className="font-semibold text-lg">Country</span> :{" "}
+              
+              <span className="font-semibold text-lg">Country</span> :
               {selectedComplaint.country}
             </h1>
             <h1>
-              {" "}
-              <span className="font-semibold text-lg">State</span> :{" "}
+              
+              <span className="font-semibold text-lg">State</span> :
               {selectedComplaint.state}
             </h1>
             <h1>
-              {" "}
-              <span className="font-semibold text-lg">District</span> :{" "}
+              
+              <span className="font-semibold text-lg">District</span> :
               {selectedComplaint.district}
             </h1>
           </div>
           <div className="flex flex-col gap-y-2">
             <h1>
-              <span className="font-semibold text-lg">House No.</span> :{" "}
+              <span className="font-semibold text-lg">House No.</span> :
               {selectedComplaint.houseNo}
             </h1>
             <h1>
-              <span className="font-semibold text-lg">Street Name</span> :{" "}
+              <span className="font-semibold text-lg">Street Name</span> :
               {selectedComplaint.streetName}
             </h1>
             <h1>
@@ -150,29 +150,26 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
         <h1 className="font-bold text-2xl py-4">Incident Details</h1>
         <div className="flex flex-col gap-y-2">
           <h1>
-            {" "}
-            <span className="font-semibold text-lg">Category</span> :{" "}
+            
+            <span className="font-semibold text-lg">Category</span> :
             {selectedComplaint.user.category}
           </h1>
           <h1>
-            {" "}
-            <span className="font-semibold text-lg">Sub-Category</span> :{" "}
+            
+            <span className="font-semibold text-lg">Sub-Category</span> :
             {selectedComplaint.subcategory}
           </h1>
           <h1>
-            {" "}
-            <span className="font-semibold text-lg">Date</span> :{" "}
+            
+            <span className="font-semibold text-lg">Date</span> :
             {selectedComplaint.date}
           </h1>
           <h1>
-            {" "}
-            <span className="font-semibold text-lg">Time</span> :{" "}
+            
+            <span className="font-semibold text-lg">Time</span> :
             {selectedComplaint.time}
           </h1>
         </div>
-        <h1 className="font-semibold text-2xl py-4">
-          Evidence / Important Documents
-        </h1>
         <h1 className="font-semibold text-2xl py-4">
           Evidence / Important Documents
         </h1>
@@ -194,9 +191,6 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
             checked={readConfirmation}
             onChange={handleCheckboxChange}
           />
-          <label htmlFor="readConfirmation">
-            I have read all documents and evidence
-          </label>
         </div>
       </div>
 
