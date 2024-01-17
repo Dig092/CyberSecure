@@ -58,7 +58,7 @@ const Dashboard = () => {
       <div className="flex flex-col w-3/4 h-full">
         <MainBar />
         <div className="CenterBar flex bg-[#F2F6FF] absolute top-28 right-0">
-          <div className="CenterLeftBar flex flex-col items-center m-6">
+          <div className="CenterLeftBar w-3/4 flex flex-col items-center m-6">
             <div className="flex">
               <div className="flex items-center bg-white mb-6 mr-4 pr-12 pl-4 rounded-2xl gap-2">
                 <img className="w-24" src={active} alt="" />
