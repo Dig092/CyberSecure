@@ -1,4 +1,4 @@
-<input type="file" accept=".pdf" onChange={(event) => this.setState({ selectedFile: event.target.files[0] })} />
+{/* <input type="file" accept=".pdf" onChange={(event) => this.setState({ selectedFile: event.target.files[0] })} />
 
 import { Document, Page } from 'react-pdf';
 
@@ -35,4 +35,4 @@ class PDFViewer extends React.Component {
       </>
     );
   }
-}
+} */}
