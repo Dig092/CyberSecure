@@ -52,13 +52,13 @@ const Dashboard = () => {
   // };
 
   return (
-    <div className="bg-[#F2F6FF] flex w-screen h-full">
+    <div className="bg-[#F2F6FF] flex h-full">
       <SideBar />
 
-      <div className="flex flex-col w-screen h-full">
+      <div className="flex flex-col h-full">
         <MainBar />
         <div className="CenterBar flex bg-[#F2F6FF] absolute top-28 right-0 ">
-          <div className="CenterLeftBar flex flex-col items-center m-6 ">
+          <div className="CenterLeftBar flex flex-col items-center m-6">
             <div className="flex">
               <div className="flex items-center bg-white mb-6 mr-4 pr-12 pl-4 rounded-2xl gap-2">
                 <img className="w-24" src={active} alt="" />
@@ -95,7 +95,7 @@ const Dashboard = () => {
                 onVerify={handleVerifyComplaint} // Add this line
               />
             </div>
-            <img className="w-full h-84 pt-6" src={chart} alt="" />
+            <img className="w-full h-96 pt-6" src={chart} alt="" />
           </div>
           <div className="CenterRightBar flex flex-col items-center">
             <div className="bg-white rounded-2xl flex flex-col items-center p-12 mt-6 h-2/5 w-72">
