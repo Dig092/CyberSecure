@@ -173,8 +173,19 @@ const ComplaintDetails = ({ selectedComplaint, onClose }) => {
         <h1 className="font-semibold text-2xl py-4">
           Evidence / Important Documents
         </h1>
-        <div>
-          <img src={selectedComplaint.nationalIdImageUrl} alt="" />
+        <h1 className="font-semibold text-2xl py-4">
+          Evidence / Important Documents
+        </h1>
+        <div className="importantDocuments">
+          {selectedComplaint.importantDocumentsUrl.map((documentUrl, index) => (
+            <div key={index} className="my-4">
+              <img
+                src={documentUrl}
+                alt={`Document ${index + 1}`}
+                className="w-full"
+              />
+            </div>
+          ))}
         </div>
         <div className="flex items-center gap-x-2 my-4">
           <input
@@ -244,7 +255,7 @@ ComplaintDetails.propTypes = {
     branch: PropTypes.string.isRequired,
     freezeReason: PropTypes.string.isRequired,
     nationalIdImageUrl: PropTypes.string.isRequired,
-    // Add more PropTypes as needed
+    importantDocumentsUrl: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
   onClose: PropTypes.func.isRequired,
   onVerify: PropTypes.func.isRequired,
