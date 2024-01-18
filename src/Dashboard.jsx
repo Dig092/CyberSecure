@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import SideBar from "./Components/SideBar";
 import MainBar from "./Components/MainBar";
-// import ComplaintDetails from "./Components/ComplaintDetails";
 import ComplaintList from "./Components/ComplaintList";
+// import { useTranslation } from "react-i18next";
 
 import active from "./assets/icon/active.png";
 import suspended from "./assets/icon/suspended.png";
@@ -16,9 +16,15 @@ import chatbot from "./assets/images/Chatbot.png";
 import CTA from "./assets/images/CTA.png";
 import chart from "./assets/images/chart.png";
 
+// const languages = [
+//   { value: "", text: "Options" },
+//   { value: "en", text: "English" },
+//   { value: "hi", text: "Hindi" },
+//   { value: "bn", text: "Bengali" },
+// ];
+
 const Dashboard = () => {
-  const [complaints, setComplaints] = useState([]);
-  // const [selectedComplaint, setSelectedComplaint] = useState(null);
+  const[complaints,setComplaints] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,14 +48,6 @@ const Dashboard = () => {
       )
     );
   };
-
-  // const handleComplaintClick = (complaint) => {
-  //   setSelectedComplaint(complaint);
-  // };
-
-  // const handleCloseDetails = () => {
-  //   setSelectedComplaint(null);
-  // };
 
   return (
     <div className="bg-[#F2F6FF] flex h-full">
