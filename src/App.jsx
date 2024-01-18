@@ -7,7 +7,7 @@ import HomePage from "./Homepage";
 import AdminLogin from "./Pages/AdminLogin";
 import Dashboard from "./Dashboard";
 import AdminVerify from "./Pages/AdminVerify";
-import Menu from "./Components/Menu";
+// import Menu from "./Components/Menu";
 
 const App = () => {
   return (
