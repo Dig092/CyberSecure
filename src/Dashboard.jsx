@@ -24,7 +24,7 @@ import chart from "./assets/images/chart.png";
 // ];
 
 const Dashboard = () => {
-  const[complaints,setComplaints] = useState(null)
+  const [complaints, setComplaints] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -88,9 +88,8 @@ const Dashboard = () => {
                 </button>
               </div>
               <ComplaintList
-                complaints={complaints}
-                // onComplaintClick={handleComplaintClick}
-                onVerify={handleVerifyComplaint} // Add this line
+                complaints={complaints || []} // Use an empty array if complaints is null
+                onVerify={handleVerifyComplaint}
               />
             </div>
             <img className="w-full h-96 pt-6" src={chart} alt="" />
