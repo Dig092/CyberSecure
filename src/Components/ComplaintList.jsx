@@ -11,6 +11,9 @@ const styles = {
 };
 
 const ComplaintList = ({ complaints, onVerify }) => {
+  if (complaints === null) {
+    return <p>Loading complaints...</p>; // You can customize this loading message
+  }
   const [selectedComplaint, setSelectedComplaint] = useState(null);
 
   const handleViewClick = (complaint) => {
@@ -65,7 +68,7 @@ const ComplaintList = ({ complaints, onVerify }) => {
     />
   )}
 </div>
-
+}
 
 ComplaintList.propTypes = {
   complaints: PropTypes.arrayOf(
