@@ -14,7 +14,7 @@ const App = () => {
     // <I18nextProvider i18n={i18next}>
       // <Suspense fallback="loading">
         <Router>
-          <Menu />
+          {/* <Menu /> */}
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/AdminLogin" element={<AdminLogin />} />
